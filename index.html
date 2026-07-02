@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>College Web Design Projects</title>
+  <style>
+    @import url('https://fonts.cdnfonts.com/css/cy-grotesk-wide'); 
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #fef7e6;
+      color: #2f2d32;
+      padding: 3rem 1.5rem;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-family: 'CY Grotesk Wide', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+      text-align: left;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: #ffffff;
+      border: 1px solid #e5e0d3;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 32px rgba(47, 45, 50, 0.08);
+    }
+
+    .image-container {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .project-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .image-container:hover .project-image {
+      transform: scale(1.03);
+    }
+
+    .button-container {
+      padding: 1.25rem;
+      background: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .open-project-btn {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background-color: #2f2d32;
+      color: #fef7e6;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+      text-align: center;
+    }
+
+    .open-project-btn:hover {
+      background-color: #444149;
+    }
+    
+    .open-project-btn:active {
+      transform: scale(0.98);
+    }
+
+    /* Lightbox Overlay Animation */
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(254, 247, 230, 0.98);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease-in-out;
+      z-index: 1000;
+    }
+
+    .lightbox.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Target Image Animation inside Lightbox */
+    .lightbox-content {
+      max-width: 90%;
+      max-height: 85vh;
+      object-fit: contain;
+      box-shadow: 0 24px 48px rgba(47, 45, 50, 0.12);
+      border-radius: 8px;
+    }
+
+    .lightbox.active .lightbox-content {
+      animation: zoomIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    @keyframes zoomIn {
+      from {
+        transform: scale(0.9);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      font-size: 2.5rem;
+      color: #2f2d32;
+      cursor: pointer;
+      line-height: 1;
+      padding: 0.5rem;
+      user-select: none;
+      transition: transform 0.2s ease;
+    }
+
+    .lightbox-close:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>College Web Design Projects</h1>
+
+    <div class="project-grid">
+      <!-- Project 1 -->
+      <div class="project-card">
+        <div class="image-container" onclick="openLightbox('US-collage-pathway-logo.jpg')">
+          <img src="US-collage-pathway-logo.jpg" alt="US College Pathway Logo" class="project-image">
+        </div>
+        <div class="button-container">
+          <button class="open-project-btn" onclick="openLightbox('US-collage-pathway-logo.jpg')">Open Project</button>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-card">
+        <div class="image-container" onclick="openLightbox('Naing.Alex.P4.final.jpg')">
+          <img src="Naing.Alex.P4.final.jpg" alt="Architectural illustration" class="project-image">
+        </div>
+        <div class="button-container">
+          <button class="open-project-btn" onclick="openLightbox('Naing.Alex.P4.final.jpg')">Open Project</button>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-card">
+        <div class="image-container" onclick="openLightbox('front.png')">
+          <img src="spiderman.png" alt="Spider-Man illustration" class="project-image">
+        </div>
+        <div class="button-container">
+          <button class="open-project-btn" onclick="openLightbox('spiderman.png')">Open Project</button>
+        </div>
+      </div>
+
+      <!-- Project 4 -->
+      <div class="project-card">
+        <div class="image-container" onclick="openLightbox('Alex.Naing.P8.Final.jpg')">
+          <img src="Alex.Naing.P8.Final.jpg" alt="Tron inspired vector art" class="project-image">
+        </div>
+        <div class="button-container">
+          <button class="open-project-btn" onclick="openLightbox('Alex.Naing.P8.Final.jpg')">Open Project</button>
+        </div>
+      </div>
+
+      <!-- Project 5 -->
+      <div class="project-card">
+        <div class="image-container" onclick="openLightbox('Naing.Alex.P3.final.jpg')">
+          <img src="Naing.Alex.P3.final.jpg" alt="Pickploy logo design" class="project-image">
+        </div>
+        <div class="button-container">
+          <button class="open-project-btn" onclick="openLightbox('Naing.Alex.P3.final.jpg')">Open Project</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox Element -->
+  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close">&times;</span>
+    <img id="lightbox-img" class="lightbox-content" src="" alt="Fullscreen preview">
+  </div>
+
+  <script>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    function openLightbox(imageSrc) {
+      lightboxImg.src = imageSrc;
+      lightbox.classList.add('active');
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      setTimeout(() => { lightboxImg.src = ''; }, 300);
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+        closeLightbox();
+      }
+    });
+  </script>
+
+</body>
+</html>
